@@ -1,0 +1,33 @@
+<div class="container">
+
+  <h1>Choose Your Plan</h1>
+  <p class="subtitle">
+    Flexible pricing for every user
+  </p>
+
+  <div class="plans-grid">
+
+    <div class="plan-card" *ngFor="let plan of plans">
+
+      <h2>{{ plan.name }}</h2>
+
+      <div class="price">
+        {{ plan.price }}
+        <span>EGP / month</span>
+      </div>
+
+      <ul>
+        <li>✔ Unlimited AI Chats</li>
+        <li>✔ Medical Assistance</li>
+        <li>✔ Priority Support</li>
+      </ul>
+
+      <button (click)="subscribe(plan)">
+        Subscribe
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
