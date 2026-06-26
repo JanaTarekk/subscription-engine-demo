@@ -1,33 +1,167 @@
-<div class="container">
+<div class="pricing-section">
+  <div class="container">
 
-  <h1>Choose Your Plan</h1>
-  <p class="subtitle">
-    Flexible pricing for every user
-  </p>
+    <span class="badge">Pricing Plans</span>
 
-  <div class="plans-grid">
+    <h1>Choose Your Plan</h1>
 
-    <div class="plan-card" *ngFor="let plan of plans">
+    <p class="subtitle">
+      Flexible payment solutions designed to help businesses accept payments,
+      manage subscriptions, and grow with confidence.
+    </p>
 
-      <h2>{{ plan.name }}</h2>
+    <div class="plans-grid">
 
-      <div class="price">
-        {{ plan.price }}
-        <span>EGP / month</span>
+      <div
+        class="plan-card"
+        *ngFor="let plan of plans"
+        [class.popular]="plan.name === 'Pro'"
+        [class.premium]="plan.name === 'Premium'"
+      >
+
+        <div class="popular-tag" *ngIf="plan.name === 'Pro'">
+          Most Popular
+        </div>
+
+        <div class="card-header">
+
+          <h2>{{ plan.name }}</h2>
+
+          <p class="plan-desc">
+            {{
+              plan.name === 'Basic'
+                ? 'Perfect for startups and social media businesses.'
+                : plan.name === 'Pro'
+                ? 'Designed for growing e-commerce businesses.'
+                : 'Enterprise payment solutions for high-volume merchants.'
+            }}
+          </p>
+
+        </div>
+
+        <div class="price-container">
+          <span class="currency">EGP</span>
+          <span class="price-amount">{{ plan.price }}</span>
+          <span class="period">/ month</span>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Reusable Check Icon -->
+        <ng-template #checkIcon>
+          <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </ng-template>
+
+        <ul class="features-list">
+
+          <!-- ================= BASIC ================= -->
+
+          <ng-container *ngIf="plan.name === 'Basic'">
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Payment Links via SMS & WhatsApp</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Accept Cards & Mobile Wallets</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Smart Merchant Dashboard</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Basic Sales Reports</span>
+            </li>
+
+            <li class="disabled">
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>API & SDK Integration</span>
+            </li>
+
+          </ng-container>
+
+          <!-- ================= PRO ================= -->
+
+          <ng-container *ngIf="plan.name === 'Pro'">
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Everything in Basic</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>API & SDK Integration</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Recurring Payments</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Digital Invoice Management</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Custom Checkout Experience</span>
+            </li>
+
+          </ng-container>
+
+          <!-- ================= PREMIUM ================= -->
+
+          <ng-container *ngIf="plan.name === 'Premium'">
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Everything in Pro</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>International Payment Support</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Advanced Fraud Protection</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Advanced Analytics & Reporting</span>
+            </li>
+
+            <li>
+              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
+              <span>Priority Enterprise Support</span>
+            </li>
+
+          </ng-container>
+
+        </ul>
+
+        <button class="cta-button" (click)="subscribe(plan)">
+          Subscribe
+        </button>
+
       </div>
-
-      <ul>
-        <li>✔ Unlimited AI Chats</li>
-        <li>✔ Medical Assistance</li>
-        <li>✔ Priority Support</li>
-      </ul>
-
-      <button (click)="subscribe(plan)">
-        Subscribe
-      </button>
 
     </div>
 
   </div>
-
 </div>

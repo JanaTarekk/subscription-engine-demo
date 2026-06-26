@@ -1,10 +1,25 @@
 import { Component } from '@angular/core';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 
 @Component({
+  selector: 'app-success',
   standalone: true,
-  template: `
-    <h1>Payment Successful 🎉</h1>
-    <p>Your subscription is ACTIVE</p>
-  `
+  imports: [RouterModule],
+  templateUrl: './success.component.html',
+  styleUrls: ['./success.component.css']
 })
-export class SuccessComponent {}
+export class SuccessComponent {
+
+  plan = '';
+  price = '';
+
+  constructor(private route: ActivatedRoute) {
+
+    this.route.queryParams.subscribe(params => {
+      this.plan = params['plan'];
+      this.price = params['price'];
+    });
+
+  }
+
+}

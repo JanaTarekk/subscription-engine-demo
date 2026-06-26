@@ -1,71 +1,206 @@
-body {
-  background: #f7f9fc;
+:host {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.pricing-section {
+  background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
+  min-height: 100vh;
+  padding: 60px 20px;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1140px;
   margin: auto;
-  padding: 40px;
   text-align: center;
 }
 
+.badge {
+  background: rgba(0, 188, 180, 0.1);
+  color: #009e97;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 38px;
+  color: #1a202c;
+  font-weight: 800;
+  margin: 0 0 12px 0;
+}
+
 .subtitle {
-  color: gray;
-  margin-bottom: 40px;
+  color: #718096;
+  font-size: 18px;
+  margin-bottom: 50px;
 }
 
 .plans-grid {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
+  align-items: stretch;
   flex-wrap: wrap;
 }
 
+/* ==========================================
+   CARD STRUCTURE (UNIFORM LIGHT THEME)
+   ========================================== */
 .plan-card {
-  width: 300px;
+  width: 320px;
   background: white;
-  border-radius: 16px;
-  padding: 25px;
-  box-shadow: 0 4px 20px rgba(0,0,0,.08);
-  transition: .3s;
+  border-radius: 24px;
+  padding: 35px 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .plan-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.price {
-  font-size: 36px;
-  font-weight: bold;
-  margin: 20px 0;
-}
-
-.price span {
-  font-size: 14px;
-  color: gray;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
+/* Header Context */
+.card-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 6px 0;
   text-align: left;
 }
 
-li {
-  margin: 10px 0;
+.plan-desc {
+  font-size: 14px;
+  color: #718096;
+  text-align: left;
+  margin: 0 0 24px 0;
 }
 
-button {
+/* Price Styling Structure */
+.price-container {
+  text-align: left;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.currency {
+  font-size: 16px;
+  font-weight: 600;
+  color: #718096;
+  margin-right: 4px;
+}
+
+.price-amount {
+  font-size: 48px;
+  font-weight: 800;
+  color: #1a202c;
+  line-height: 1;
+}
+
+.period {
+  font-size: 15px;
+  color: #a0aec0;
+  margin-left: 6px;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #edf2f7;
+  margin: 10px 0 24px 0;
+}
+
+/* Feature Lists with SVGs */
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+  text-align: left;
+  flex-grow: 1;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 15px;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.icon-check {
+  width: 20px;
+  height: 20px;
+  color: #00BCB4;
+  flex-shrink: 0;
+}
+
+/* Visual cue for missing/disabled features in lower tiers */
+.features-list li.disabled {
+  color: #cbd5e0;
+  text-decoration: line-through;
+}
+
+.features-list li.disabled .icon-check {
+  color: #cbd5e0;
+}
+
+/* ==========================================
+   BUTTON STYLING (UNIFORM TEAL BRANDING)
+   ========================================== */
+.cta-button {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 8px;
+  border-radius: 14px;
   background: #00BCB4;
   color: white;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 188, 180, 0.15);
 }
 
-button:hover {
+.cta-button:hover {
+  background: #00a39c;
+  box-shadow: 0 8px 25px rgba(0, 188, 180, 0.35);
+}
+
+/* ==========================================
+   VARIANT STYLING: MOST POPULAR HIGHLIGHT
+   ========================================== */
+.plan-card.popular {
+  border-color: #00BCB4;
+  transform: scale(1.03);
+}
+
+.plan-card.popular:hover {
+  transform: scale(1.03) translateY(-8px);
+}
+
+.popular-tag {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
   background: #00BCB4;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 12px rgba(0, 188, 180, 0.3);
 }

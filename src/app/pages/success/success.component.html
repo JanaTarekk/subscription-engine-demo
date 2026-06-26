@@ -1,6 +1,82 @@
-<h1>Payment Successful 🎉</h1>
-<p>Your subscription is now active.</p>
+<div class="dashboard-container">
+  <!-- Top Banner / Header Segment -->
+  <header class="dashboard-header">
+    <div class="welcome-text">
+      <h1>Welcome Back, Merchant! 👋</h1>
+      <p class="subtitle">Manage your payment gateway subscription and account metrics.</p>
+    </div>
+    <div class="status-badge active-badge">
+      <span class="dot"></span> Account Active
+    </div>
+  </header>
 
-<a routerLink="/subscriptions">
-  Go to Subscription Dashboard
-</a>
+  <hr class="section-divider" />
+
+  <!-- Success Notification Card -->
+  <div class="alert-card success-alert">
+    <div class="alert-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <div class="alert-content">
+      <h3>{{ plan }} Subscription Activated!</h3>
+      <p>Your {{ plan }} subscription has been activated successfully. Thank you for choosing Kashier Solutions.</p>
+    </div>
+  </div>
+
+  <!-- Dashboard Overview Grid -->
+  <div class="dashboard-grid">
+    
+    <!-- Subscription Card -->
+    <div class="dash-card plan-details-card">
+      <div class="card-title">
+        <h2>Current Subscription</h2>
+        <span class="plan-tag">{{ plan }}</span>
+      </div>
+      
+      <div class="plan-price-info">
+        <span class="price-amount">{{ price }} EGP</span>
+        <span class="price-period">/ month</span>
+      </div>
+
+      <ul class="meta-info-list">
+        <li>
+          <span class="label">Status:</span>
+          <span class="value text-success">Active (Auto-renews)</span>
+        </li>
+        <li>
+          <span class="label">Next Billing Date:</span>
+          <span class="value">July 26, 2026</span>
+        </li>
+        <li>
+          <span class="label">Payment Method:</span>
+          <span class="value">Visa ending in •••• 1019</span>
+        </li>
+      </ul>
+
+      <div class="card-actions">
+        <button class="btn btn-secondary">Change Plan</button>
+        <button class="btn btn-outline-danger">Cancel Subscription</button>
+      </div>
+    </div>
+
+    <!-- Quick API & Gateway Stats Card -->
+    <div class="dash-card metrics-card">
+      <h2>Gateway Quick Actions</h2>
+      <p class="card-desc">Start accepting digital payments using your active account parameters.</p>
+      
+      <div class="action-grid">
+        <a routerLink="/developers" class="action-tile">
+          <div class="tile-icon font-tech">API KEYS</div>
+          <span>Retrieve Live Integration Tokens</span>
+        </a>
+        <a routerLink="/dashboard/invoices" class="action-tile">
+          <div class="tile-icon font-invoice">📄</div>
+          <span>Create Digital Invoices</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

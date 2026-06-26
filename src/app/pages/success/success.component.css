@@ -1,0 +1,266 @@
+/* Container Layout */
+.dashboard-container {
+  max-width: 1140px;
+  margin: 40px auto;
+  padding: 0 24px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #1A1D4B; /* Kashier Dark Navy */
+}
+
+/* Header Rules */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.welcome-text h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+}
+
+.welcome-text .subtitle {
+  color: #696cff9e;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Status Badge Component */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.active-badge {
+  background-color: #e6f9f8;
+  color: #00BCB4; /* Kashier Teal */
+}
+
+.active-badge .dot {
+  width: 8px;
+  height: 8px;
+  background-color: #00BCB4;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.section-divider {
+  border: 0;
+  border-top: 1px solid #e1e2ec;
+  margin: 24px 0;
+}
+
+/* Success Message Banner Layout */
+.alert-card {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 32px;
+}
+
+.success-alert {
+  background-color: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.alert-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.alert-content h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.alert-content p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Dashboard Structural Grid Panels */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dash-card {
+  background: #ffffff;
+  border: 1px solid #e8e9f3;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 4px 12px rgba(26, 29, 75, 0.03);
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.dash-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.plan-tag {
+  background-color: #1A1D4B;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.plan-price-info {
+  margin-bottom: 24px;
+}
+
+.price-amount {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.price-period {
+  color: #71749e;
+  font-size: 15px;
+}
+
+/* Meta Data Context Rows */
+.meta-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px 0;
+}
+
+.meta-info-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px dashed #e8e9f3;
+  font-size: 14px;
+}
+
+.meta-info-list li:last-child {
+  border-bottom: none;
+}
+
+.meta-info-list .label {
+  color: #71749e;
+  font-weight: 500;
+}
+
+.meta-info-list .value {
+  font-weight: 600;
+}
+
+.text-success {
+  color: #10b981;
+}
+
+/* Button Configurations */
+.card-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  flex: 1;
+}
+
+.btn-secondary {
+  background-color: #f0f1f9;
+  color: #1A1D4B;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e4f3;
+}
+
+.btn-outline-danger {
+  background-color: transparent;
+  border-color: #fee2e2;
+  color: #ef4444;
+}
+
+.btn-outline-danger:hover {
+  background-color: #fef2f2;
+}
+
+/* Quick Actions Tile Layout */
+.card-desc {
+  color: #71749e;
+  font-size: 14px;
+  margin: 6px 0 24px 0;
+}
+
+.action-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.action-tile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e8e9f3;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.action-tile:hover {
+  border-color: #00BCB4;
+  background-color: #fafbfe;
+  transform: translateX(4px);
+}
+
+.tile-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #f0fdfa;
+  color: #00BCB4;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.font-invoice {
+  font-size: 18px;
+}

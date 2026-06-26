@@ -20,7 +20,8 @@ export class PaymentService {
       currency: "EGP",
       order: "ORDER_" + Date.now(),
 
-      merchantRedirect: "https://subscription-engine-demo.vercel.app/success",
+      merchantRedirect:
+`https://subscription-engine-demo.vercel.app/success?plan=${plan.name}&price=${plan.price}`,
 
       display: "en",
       type: "one-time",

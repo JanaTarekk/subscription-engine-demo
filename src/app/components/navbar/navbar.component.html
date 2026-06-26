@@ -1,0 +1,35 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <!-- Brand Logo Image -->
+    <div class="nav-brand" routerLink="/">
+      <img 
+        src="https://cdn.prod.website-files.com/5e7783f66312835b392f3113/62e9f740edb082afb1ec27c9_Kashier-payment-solutions-logo.png" 
+        alt="Kashier Logo" 
+        class="brand-logo"
+      />
+    </div>
+
+    <button class="menu-toggle" (click)="toggleMenu()" [class.open]="isMenuOpen" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <div class="nav-menu-wrapper" [class.active]="isMenuOpen">
+      <ul class="nav-links">
+        <li><a routerLink="/product" routerLinkActive="active">Product</a></li>
+        <li><a routerLink="/company" routerLinkActive="active">Company</a></li>
+        <li><a routerLink="/pricing" routerLinkActive="active">Pricing</a></li>
+        <li><a routerLink="/partners" routerLinkActive="active">Partners</a></li>
+        <li><a routerLink="/developers" routerLinkActive="active">Developers</a></li>
+        <li><a routerLink="/support" routerLinkActive="active">Support</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a routerLink="/login" class="btn-link">Log In</a>
+        <button class="btn-cta">Create A Free Account</button>
+        <a routerLink="/ar" class="lang-switch">عربي</a>
+      </div>
+    </div>
+  </div>
+</nav>
