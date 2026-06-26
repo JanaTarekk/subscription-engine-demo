@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment'; // Make sure this path matches where your environment file is located
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ export class PaymentService {
       display: "en",
       type: "one-time",
 
-      merchantId: "MID-47274-733",
+      merchantId: environment.kashierMerchantId,
 
       description: plan.name,
 
@@ -43,8 +44,8 @@ export class PaymentService {
       body,
       {
         headers: {
-          Authorization: '886bc608afcdd7105c4a467512b27b0a$507fb0cc1caad3f3a9eb664a725825614af76fafd9d0f0751f589b6a4c4390c6e715f5b24b8103a9864758ce072cf3ac',
-          'api-key': 'caff44ee-20ad-4236-ac43-aa57b56bae0b',
+          Authorization: environment.kashierAuthToken,
+          'api-key': environment.kashierApiKey,
           'Content-Type': 'application/json'
         }
       }
