@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 import { PaymentService } from '../../services/payment.service';
-import { PlanService } from '../../services/plan.service';
-import { MerchantService } from '../../services/merchant.service';
+import { FirebaseService } from '../../services/firebase.service';
 
 import { Plan } from '../../models/plan.model';
 import { Merchant } from '../../models/merchant.model';
@@ -29,37 +29,59 @@ export class PlansComponent implements OnInit {
 
   constructor(
     private paymentService: PaymentService,
-    private planService: PlanService,
-    private merchantService: MerchantService
+    private firebaseService: FirebaseService,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
-    this.plans = this.planService.getPlans();
+    const merchantId = this.route.snapshot.paramMap.get('id');
 
-    this.merchant = this.merchantService.getMerchant();
+    if (!merchantId) {
+      console.error('No merchant ID found in URL');
+      return;
+    }
 
+    const data: any = await this.firebaseService.getMerchant(merchantId);
+
+    if (!data) {
+      console.error('Merchant not found');
+      return;
+    }
+
+    this.merchant = {
+      businessName: data.businessName,
+      description: data.description,
+      logo: data.logo,
+      brandColor: data.brandColor,
+      website: data.website
+    };
+
+    this.plans = data.plans || [];
+
+    console.log('Merchant:', this.merchant);
+    console.log('Plans:', this.plans);
   }
 
   subscribe(plan: Plan) {
 
-  console.log("Selected plan:", plan);
+    console.log('Selected plan:', plan);
 
-  this.paymentService.createSession(plan).subscribe({
-    next: (res) => {
+    this.paymentService.createSession(plan).subscribe({
+      next: (res) => {
 
-      console.log("Payment response:", res);
+        console.log('Payment response:', res);
 
-      if (res.sessionUrl) {
-        window.location.href = res.sessionUrl;
+        if (res.sessionUrl) {
+          window.location.href = res.sessionUrl;
+        }
+
+      },
+      error: (err) => {
+        console.error('Payment error:', err);
       }
+    });
 
-    },
-    error: (err) => {
-      console.error("Payment error:", err);
-    }
-  });
-
-}
+  }
 
 }
