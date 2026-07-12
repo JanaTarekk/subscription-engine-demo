@@ -1,0 +1,312 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <div class="page-header">
+
+    <span class="badge">Merchant Dashboard</span>
+
+    <h1>Manage Your Subscription Business</h1>
+
+    <p>
+      Brand your business, create subscription plans, and publish them for customers.
+    </p>
+
+  </div>
+
+  <!-- ================= BRANDING ================= -->
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h2>Step 1 · Brand Your Business</h2>
+
+      <p>
+        Customize how customers will see your subscription page.
+      </p>
+
+    </div>
+
+    <form>
+
+  <div class="form-group">
+
+    <label>Business Name</label>
+
+    <input
+      type="text"
+      name="businessName"
+      [(ngModel)]="merchant.businessName"
+      placeholder="FitZone Gym">
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Business Description</label>
+
+    <textarea
+      rows="3"
+      name="description"
+      [(ngModel)]="merchant.description"
+      placeholder="The best fitness memberships in Cairo">
+    </textarea>
+
+  </div>
+
+  <div class="form-group">
+
+    <label>Website</label>
+
+    <input
+      type="text"
+      name="website"
+      [(ngModel)]="merchant.website"
+      placeholder="https://fitzone.com">
+
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group">
+
+      <label>Logo URL</label>
+
+      <input
+        type="text"
+        name="logo"
+        [(ngModel)]="merchant.logo"
+        placeholder="https://example.com/logo.png">
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Brand Color</label>
+
+      <input
+        type="color"
+        name="brandColor"
+        [(ngModel)]="merchant.brandColor">
+
+    </div>
+
+  </div>
+
+  <button
+    type="button"
+    class="btn-primary"
+    (click)="saveBranding()">
+
+    Save Branding
+
+  </button>
+
+</form>
+
+  </div>
+
+  <!-- ================= CREATE PLAN ================= -->
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h2>Step 2 · Create Subscription Plan</h2>
+
+      <p>
+        Add plans that customers can purchase.
+      </p>
+
+    </div>
+
+    <form (ngSubmit)="savePlan()">
+
+      <div class="form-group">
+
+        <label>Plan Name</label>
+
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="plan.name"
+          placeholder="Premium Plan"
+          required>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Description</label>
+
+        <textarea
+          rows="3"
+          name="description"
+          [(ngModel)]="plan.description"
+          placeholder="Describe your subscription"
+          required>
+        </textarea>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+
+          <label>Price (EGP)</label>
+
+          <input
+            type="number"
+            name="price"
+            [(ngModel)]="plan.price"
+            required>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Billing Cycle</label>
+
+          <select
+            name="billingCycle"
+            [(ngModel)]="plan.billingCycle">
+
+            <option value="Monthly">
+              Monthly
+            </option>
+
+            <option value="Yearly">
+              Yearly
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Features</label>
+
+        <textarea
+          rows="6"
+          name="features"
+          [(ngModel)]="featuresText"
+          placeholder="Unlimited Access&#10;Priority Support&#10;Analytics Dashboard">
+        </textarea>
+
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary">
+
+        Create Plan
+
+      </button>
+
+    </form>
+
+  </div>
+
+  <!-- ================= EXISTING PLANS ================= -->
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h2>Step 3 · Your Subscription Plans</h2>
+
+      <p>
+        Manage the plans displayed on your public website.
+      </p>
+
+    </div>
+
+    <div class="plans-grid">
+
+      <div
+        class="plan-card"
+        *ngFor="let plan of plans">
+
+        <div class="plan-top">
+
+          <h3>{{ plan.name }}</h3>
+
+          <div class="price">
+
+            EGP {{ plan.price }}
+
+            <span>
+              / {{ plan.billingCycle }}
+            </span>
+
+          </div>
+
+        </div>
+
+        <p class="description">
+
+          {{ plan.description }}
+
+        </p>
+
+        <ul>
+
+          <li
+            *ngFor="let feature of plan.features">
+
+            ✓ {{ feature }}
+
+          </li>
+
+        </ul>
+
+        <button
+          class="delete-btn"
+          (click)="deletePlan(plan.id)">
+
+          Delete Plan
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="publish-section">
+
+  <button
+    class="btn-primary publish-btn"
+    (click)="publishWebsite()">
+
+    🚀 Publish Website
+
+  </button>
+
+</div>
+
+<div
+  class="published-link"
+  *ngIf="publicLink">
+
+  <h3>Your public website is ready!</h3>
+
+  <input
+    [value]="publicLink"
+    readonly>
+
+  <button
+    class="btn-primary"
+    (click)="copyLink()">
+
+    Copy Link
+
+  </button>
+
+</div>
+
+  </div>
+
+</div>

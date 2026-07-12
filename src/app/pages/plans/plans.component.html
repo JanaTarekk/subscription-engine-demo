@@ -1,40 +1,42 @@
 <div class="pricing-section">
   <div class="container">
 
-    <span class="badge">Pricing Plans</span>
+    <!-- Merchant Branding -->
+    <div class="merchant-header">
 
-    <h1>Choose Your Plan</h1>
+      <img
+        *ngIf="merchant.logo"
+        [src]="merchant.logo"
+        class="merchant-logo"
+        alt="Business Logo">
 
-    <p class="subtitle">
-      Flexible payment solutions designed to help businesses accept payments,
-      manage subscriptions, and grow with confidence.
-    </p>
+      <span class="badge">
+        {{ merchant.businessName || 'Merchant' }}
+      </span>
 
+      <h1>
+        {{ merchant.businessName || 'Subscription Plans' }}
+      </h1>
+
+      <p class="subtitle">
+        {{ merchant.description || 'Choose the subscription that best fits your needs.' }}
+      </p>
+
+    </div>
+
+    <!-- Plans -->
     <div class="plans-grid">
 
       <div
         class="plan-card"
-        *ngFor="let plan of plans"
-        [class.popular]="plan.name === 'Pro'"
-        [class.premium]="plan.name === 'Premium'"
-      >
-
-        <div class="popular-tag" *ngIf="plan.name === 'Pro'">
-          Most Popular
-        </div>
+        *ngFor="let plan of plans">
 
         <div class="card-header">
 
           <h2>{{ plan.name }}</h2>
 
           <p class="plan-desc">
-            {{
-              plan.name === 'Basic'
-                ? 'Perfect for startups and social media businesses.'
-                : plan.name === 'Pro'
-                ? 'Designed for growing e-commerce businesses.'
-                : 'Enterprise payment solutions for high-volume merchants.'
-            }}
+            {{ plan.description || 'No description provided.' }}
           </p>
 
         </div>
@@ -42,124 +44,54 @@
         <div class="price-container">
           <span class="currency">EGP</span>
           <span class="price-amount">{{ plan.price }}</span>
-          <span class="period">/ month</span>
+          <span class="period">
+            / {{ plan.billingCycle || 'Monthly' }}
+          </span>
         </div>
 
         <hr class="divider" />
 
-        <!-- Reusable Check Icon -->
+        <!-- Check Icon -->
         <ng-template #checkIcon>
           <svg class="icon-check" viewBox="0 0 20 20" fill="currentColor">
             <path
               fill-rule="evenodd"
               d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-              clip-rule="evenodd"
-            />
+              clip-rule="evenodd">
+            </path>
           </svg>
         </ng-template>
 
         <ul class="features-list">
 
-          <!-- ================= BASIC ================= -->
+          <li *ngFor="let feature of plan.features">
 
-          <ng-container *ngIf="plan.name === 'Basic'">
+            <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
 
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Payment Links via SMS & WhatsApp</span>
-            </li>
+            <span>{{ feature }}</span>
 
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Accept Cards & Mobile Wallets</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Smart Merchant Dashboard</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Basic Sales Reports</span>
-            </li>
-
-            <li class="disabled">
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>API & SDK Integration</span>
-            </li>
-
-          </ng-container>
-
-          <!-- ================= PRO ================= -->
-
-          <ng-container *ngIf="plan.name === 'Pro'">
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Everything in Basic</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>API & SDK Integration</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Recurring Payments</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Digital Invoice Management</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Custom Checkout Experience</span>
-            </li>
-
-          </ng-container>
-
-          <!-- ================= PREMIUM ================= -->
-
-          <ng-container *ngIf="plan.name === 'Premium'">
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Everything in Pro</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>International Payment Support</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Advanced Fraud Protection</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Advanced Analytics & Reporting</span>
-            </li>
-
-            <li>
-              <ng-container *ngTemplateOutlet="checkIcon"></ng-container>
-              <span>Priority Enterprise Support</span>
-            </li>
-
-          </ng-container>
+          </li>
 
         </ul>
 
-        <button class="cta-button" (click)="subscribe(plan)">
+        <button
+          class="cta-button"
+          (click)="subscribe(plan)">
           Subscribe
         </button>
 
       </div>
+
+    </div>
+
+    <!-- Empty State -->
+    <div
+      class="empty-state"
+      *ngIf="plans.length === 0">
+
+      <h3>No subscription plans available.</h3>
+
+      <p>The merchant hasn't created any plans yet.</p>
 
     </div>
 

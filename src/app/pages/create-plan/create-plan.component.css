@@ -1,0 +1,310 @@
+/* ===========================
+   Google Font
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#eef5ff;
+    color:#1f2937;
+}
+
+/* ===========================
+   Dashboard
+=========================== */
+
+.dashboard{
+    max-width:1100px;
+    margin:40px auto;
+    padding:20px;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.page-header{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.badge{
+    display:inline-block;
+    background:#dbeafe;
+    color:#2563eb;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.page-header h1{
+    font-size:36px;
+    color:#1f2937;
+    margin-bottom:12px;
+    font-weight:700;
+}
+
+.page-header p{
+    color:#6b7280;
+    font-size:16px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.card{
+    background:#ffffff;
+    border:1px solid #dbeafe;
+    border-radius:18px;
+    padding:30px;
+    margin-bottom:30px;
+    box-shadow:0 8px 24px rgba(15,23,42,.06);
+}
+
+.card-header{
+    margin-bottom:25px;
+}
+
+.card-header h2{
+    color:#334155;
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.card-header p{
+    color:#6b7280;
+}
+
+/* ===========================
+   Forms
+=========================== */
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-row{
+    display:flex;
+    gap:20px;
+}
+
+.form-row .form-group{
+    flex:1;
+}
+
+label{
+    font-weight:600;
+    margin-bottom:8px;
+    color:#374151;
+}
+
+/* ===========================
+   Inputs
+=========================== */
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:#f8fafc;
+    font-size:15px;
+    color:#1f2937;
+    outline:none;
+    transition:.25s ease;
+}
+
+textarea{
+    resize:vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    background:#fff;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 3px rgba(59,130,246,.12);
+}
+
+input[type="color"]{
+    height:52px;
+    cursor:pointer;
+    padding:4px;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.btn-primary{
+    width:fit-content;
+    padding:13px 28px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+    box-shadow:0 10px 18px rgba(37,99,235,.18);
+}
+
+/* ===========================
+   Plans
+=========================== */
+
+.plans-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:24px;
+    margin-top:15px;
+}
+
+.plan-card{
+    background:white;
+    border:1px solid #dbeafe;
+    border-radius:16px;
+    padding:24px;
+    transition:.25s;
+}
+
+.plan-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 22px rgba(37,99,235,.10);
+}
+
+.plan-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:18px;
+}
+
+.plan-top h3{
+    color:#374151;
+    font-size:21px;
+    font-weight:600;
+}
+
+.price{
+    font-size:26px;
+    font-weight:700;
+    color:#2563eb;
+}
+
+.price span{
+    font-size:14px;
+    color:#6b7280;
+    font-weight:500;
+}
+
+.description{
+    color:#6b7280;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.plan-card ul{
+    list-style:none;
+    margin-bottom:22px;
+}
+
+.plan-card li{
+    padding:8px 0;
+    color:#374151;
+    border-bottom:1px solid #eef2f7;
+}
+
+/* ===========================
+   Delete Button
+=========================== */
+
+.delete-btn{
+    width:100%;
+    padding:12px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    background:#ffffff;
+    color:#64748b;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.delete-btn:hover{
+    background:#f8fafc;
+    border-color:#ef4444;
+    color:#ef4444;
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#bfdbfe;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#93c5fd;
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:768px){
+
+    .dashboard{
+        padding:15px;
+    }
+
+    .page-header h1{
+        font-size:28px;
+    }
+
+    .form-row{
+        flex-direction:column;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .btn-primary{
+        width:100%;
+    }
+}

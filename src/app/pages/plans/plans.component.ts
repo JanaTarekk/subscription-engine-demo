@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+
 import { PaymentService } from '../../services/payment.service';
+import { FirebaseService } from '../../services/firebase.service';
+
+import { Plan } from '../../models/plan.model';
+import { Merchant } from '../../models/merchant.model';
 
 @Component({
   selector: 'app-plans',
@@ -9,35 +15,63 @@ import { PaymentService } from '../../services/payment.service';
   templateUrl: './plans.component.html',
   styleUrl: './plans.component.css'
 })
-export class PlansComponent {
+export class PlansComponent implements OnInit {
 
-  constructor(private paymentService: PaymentService) {}
+  plans: Plan[] = [];
 
-  plans = [
-    { id: 1, name: 'Basic', price: 100 },
-    { id: 2, name: 'Pro', price: 250 },
-    { id: 3, name: 'Premium', price: 500 }
-  ];
+  merchant: Merchant = {
+    businessName: '',
+    description: '',
+    logo: '',
+    brandColor: '#635BFF',
+    website: ''
+  };
 
-subscribe(plan: any) {
-  console.log('CLICKED', plan);
+  constructor(
+    private paymentService: PaymentService,
+    private firebaseService: FirebaseService,
+    private route: ActivatedRoute
+  ) {}
 
-  this.paymentService.createSession(plan).subscribe({
-    next: (res) => {
-      console.log('💳 KASHIER RESPONSE:', res);
+  async ngOnInit() {
 
-      const url = res.sessionUrl;
+    const merchantId = this.route.snapshot.paramMap.get('id');
 
-      if (url) {
-        window.location.href = url; 
-        // OR: window.open(url, '_blank');
-      } else {
-        console.error('No sessionUrl returned');
-      }
-    },
-    error: (err) => {
-      console.error('❌ PAYMENT ERROR:', err);
+    if (!merchantId) {
+      return;
     }
-  });
-}
+
+    const data: any = await this.firebaseService.getMerchant(merchantId);
+
+    if (data) {
+
+      this.merchant = {
+        businessName: data.businessName,
+        description: data.description,
+        logo: data.logo,
+        brandColor: data.brandColor,
+        website: data.website
+      };
+
+      this.plans = data.plans || [];
+
+    }
+
+  }
+
+  subscribe(plan: Plan) {
+
+    this.paymentService.createSession(plan).subscribe({
+      next: (res) => {
+
+        if (res.sessionUrl) {
+          window.location.href = res.sessionUrl;
+        }
+
+      },
+      error: (err) => console.error(err)
+    });
+
+  }
+
 }
