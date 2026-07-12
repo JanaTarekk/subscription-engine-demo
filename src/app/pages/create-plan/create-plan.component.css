@@ -1,310 +1,665 @@
 /* ===========================
-   Google Font
+   GLOBAL
 =========================== */
 
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+:host {
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-body{
-    background:#eef5ff;
-    color:#1f2937;
+* {
+  box-sizing: border-box;
 }
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 
 /* ===========================
-   Dashboard
+   DASHBOARD
 =========================== */
 
-.dashboard{
-    max-width:1100px;
-    margin:40px auto;
-    padding:20px;
+.dashboard {
+
+  min-height: 100vh;
+
+  width: 100%;
+  max-width: 100%;
+
+  background: #eef5ff;
+
+  padding: 50px 20px;
+
+  color: #1f2937;
+
+  overflow-x: hidden;
+
 }
+
 
 /* ===========================
-   Header
+   HEADER
 =========================== */
 
-.page-header{
-    text-align:center;
-    margin-bottom:45px;
+.page-header {
+
+  max-width: 750px;
+
+  margin: 0 auto 45px;
+
+  text-align: center;
+
 }
 
-.badge{
-    display:inline-block;
-    background:#dbeafe;
-    color:#2563eb;
-    padding:8px 18px;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    margin-bottom:18px;
+
+.badge {
+
+  display: inline-block;
+
+  background: #dbeafe;
+
+  color: #2563eb;
+
+  padding: 8px 18px;
+
+  border-radius: 999px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  margin-bottom: 18px;
+
 }
 
-.page-header h1{
-    font-size:36px;
-    color:#1f2937;
-    margin-bottom:12px;
-    font-weight:700;
+
+.page-header h1 {
+
+  font-size: 38px;
+
+  font-weight: 800;
+
+  color: #1e293b;
+
+  margin-bottom: 15px;
+
 }
 
-.page-header p{
-    color:#6b7280;
-    font-size:16px;
-    max-width:700px;
-    margin:auto;
-    line-height:1.7;
+
+.page-header p {
+
+  color: #64748b;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+
 }
+
+
 
 /* ===========================
-   Cards
+   CARDS
 =========================== */
 
-.card{
-    background:#ffffff;
-    border:1px solid #dbeafe;
-    border-radius:18px;
-    padding:30px;
-    margin-bottom:30px;
-    box-shadow:0 8px 24px rgba(15,23,42,.06);
+
+.card {
+
+  width: 100%;
+
+  max-width: 1100px;
+
+  margin: 0 auto 35px;
+
+  background: white;
+
+  border-radius: 22px;
+
+  padding: 35px;
+
+  border: 1px solid #dbeafe;
+
+  box-shadow:
+  0 10px 30px rgba(15,23,42,.06);
+
+  overflow: hidden;
+
 }
 
-.card-header{
-    margin-bottom:25px;
+
+
+.card-header {
+
+  margin-bottom: 30px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #eef2f7;
+
 }
 
-.card-header h2{
-    color:#334155;
-    font-size:22px;
-    margin-bottom:8px;
+
+.card-header h2 {
+
+  font-size: 24px;
+
+  color: #1e293b;
+
+  margin-bottom: 8px;
+
 }
 
-.card-header p{
-    color:#6b7280;
+
+.card-header p {
+
+  color:#64748b;
+
 }
+
+
 
 /* ===========================
-   Forms
+   FORMS
 =========================== */
 
-form{
-    display:flex;
-    flex-direction:column;
-    gap:22px;
+
+form {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:22px;
+
 }
 
-.form-group{
-    display:flex;
-    flex-direction:column;
+
+.form-group {
+
+  display:flex;
+
+  flex-direction:column;
+
 }
 
-.form-row{
-    display:flex;
-    gap:20px;
+
+.form-row {
+
+  display:flex;
+
+  gap:25px;
+
 }
 
-.form-row .form-group{
-    flex:1;
+
+.form-row .form-group {
+
+  flex:1;
+
 }
 
-label{
-    font-weight:600;
-    margin-bottom:8px;
-    color:#374151;
+
+label {
+
+  font-size:14px;
+
+  font-weight:700;
+
+  color:#334155;
+
+  margin-bottom:8px;
+
 }
 
-/* ===========================
-   Inputs
-=========================== */
 
 input,
 textarea,
-select{
-    width:100%;
-    padding:14px 16px;
-    border:1px solid #cbd5e1;
-    border-radius:10px;
-    background:#f8fafc;
-    font-size:15px;
-    color:#1f2937;
-    outline:none;
-    transition:.25s ease;
+select {
+
+  width:100%;
+
+  max-width:100%;
+
+  padding:14px 16px;
+
+  border-radius:12px;
+
+  border:1px solid #cbd5e1;
+
+  background:#f8fafc;
+
+  color:#1e293b;
+
+  font-size:15px;
+
+  outline:none;
+
+  transition:.25s;
+
 }
 
-textarea{
-    resize:vertical;
+
+
+textarea {
+
+  resize:vertical;
+
 }
+
 
 input:focus,
 textarea:focus,
-select:focus{
-    background:#fff;
-    border-color:#3b82f6;
-    box-shadow:0 0 0 3px rgba(59,130,246,.12);
+select:focus {
+
+  background:white;
+
+  border-color:#2563eb;
+
+  box-shadow:
+  0 0 0 4px rgba(37,99,235,.12);
+
 }
 
-input[type="color"]{
-    height:52px;
-    cursor:pointer;
-    padding:4px;
+
+
+input[type="color"] {
+
+  height:52px;
+
+  padding:5px;
+
 }
+
+
 
 /* ===========================
-   Buttons
+   BUTTONS
 =========================== */
 
-.btn-primary{
-    width:fit-content;
-    padding:13px 28px;
-    border:none;
-    border-radius:10px;
-    background:#2563eb;
-    color:white;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
+
+.btn-primary {
+
+  width:fit-content;
+
+  padding:14px 30px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:#2563eb;
+
+  color:white;
+
+  font-size:15px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:.25s;
+
 }
 
-.btn-primary:hover{
-    background:#1d4ed8;
-    transform:translateY(-2px);
-    box-shadow:0 10px 18px rgba(37,99,235,.18);
+
+.btn-primary:hover {
+
+  background:#1d4ed8;
+
+  transform:translateY(-2px);
+
 }
+
+
 
 /* ===========================
-   Plans
+   PLANS
 =========================== */
 
-.plans-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:24px;
-    margin-top:15px;
+
+.plans-grid {
+
+  width:100%;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(280px,1fr));
+
+  gap:25px;
+
 }
 
-.plan-card{
-    background:white;
-    border:1px solid #dbeafe;
-    border-radius:16px;
-    padding:24px;
-    transition:.25s;
+
+
+.plan-card {
+
+  width:100%;
+
+  background:#f8fafc;
+
+  border:1px solid #dbeafe;
+
+  border-radius:18px;
+
+  padding:25px;
+
+  transition:.25s;
+
 }
 
-.plan-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 22px rgba(37,99,235,.10);
+
+
+.plan-card:hover {
+
+  background:white;
+
+  transform:translateY(-5px);
+
+  box-shadow:
+  0 15px 35px rgba(37,99,235,.12);
+
 }
 
-.plan-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    margin-bottom:18px;
+
+
+.plan-top {
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  gap:15px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:18px;
+
 }
 
-.plan-top h3{
-    color:#374151;
-    font-size:21px;
-    font-weight:600;
+
+
+.plan-top h3 {
+
+  font-size:21px;
+
+  color:#1e293b;
+
 }
 
-.price{
-    font-size:26px;
-    font-weight:700;
-    color:#2563eb;
+
+.price {
+
+  font-size:24px;
+
+  font-weight:800;
+
+  color:#2563eb;
+
 }
 
-.price span{
-    font-size:14px;
-    color:#6b7280;
-    font-weight:500;
+
+.price span {
+
+  font-size:13px;
+
+  color:#64748b;
+
 }
 
-.description{
-    color:#6b7280;
-    line-height:1.7;
-    margin-bottom:18px;
-}
 
-.plan-card ul{
-    list-style:none;
-    margin-bottom:22px;
-}
-
-.plan-card li{
-    padding:8px 0;
-    color:#374151;
-    border-bottom:1px solid #eef2f7;
-}
 
 /* ===========================
-   Delete Button
+   FEATURES
 =========================== */
 
-.delete-btn{
-    width:100%;
-    padding:12px;
-    border:1px solid #d1d5db;
-    border-radius:10px;
-    background:#ffffff;
-    color:#64748b;
-    font-size:15px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
+
+.plan-card ul {
+
+  list-style:none;
+
+  padding:0;
+
+  margin:0 0 25px;
+
 }
 
-.delete-btn:hover{
-    background:#f8fafc;
-    border-color:#ef4444;
-    color:#ef4444;
+
+.plan-card li {
+
+  padding:10px 0;
+
+  color:#334155;
+
+  border-bottom:1px solid #e5e7eb;
+
 }
+
+
 
 /* ===========================
-   Scrollbar
+   DELETE
 =========================== */
 
-::-webkit-scrollbar{
-    width:8px;
+
+.delete-btn {
+
+  width:100%;
+
+  padding:12px;
+
+  border-radius:12px;
+
+  border:1px solid #fecaca;
+
+  background:white;
+
+  color:#dc2626;
+
+  font-weight:700;
+
+  cursor:pointer;
+
 }
 
-::-webkit-scrollbar-thumb{
-    background:#bfdbfe;
-    border-radius:10px;
-}
 
-::-webkit-scrollbar-thumb:hover{
-    background:#93c5fd;
-}
 
 /* ===========================
-   Responsive
+   PUBLISH WEBSITE
 =========================== */
+
+
+.publish-section {
+
+  margin-top:40px;
+
+  padding-top:30px;
+
+  border-top:1px solid #e5e7eb;
+
+  display:flex;
+
+  justify-content:center;
+
+}
+
+
+
+.publish-btn {
+
+  width:260px;
+
+}
+
+
+
+.published-link {
+
+  margin-top:30px;
+
+  padding:25px;
+
+  width:100%;
+
+  background:#eff6ff;
+
+  border:1px solid #bfdbfe;
+
+  border-radius:16px;
+
+  text-align:center;
+
+}
+
+
+
+.published-link h3 {
+
+  color:#1e40af;
+
+  margin-bottom:18px;
+
+}
+
+
+
+.published-link input {
+
+  width:100%;
+
+  max-width:100%;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+
+  white-space:nowrap;
+
+  margin-bottom:15px;
+
+  background:white;
+
+}
+
+
+
+/* ===========================
+   MOBILE
+=========================== */
+
 
 @media(max-width:768px){
 
-    .dashboard{
-        padding:15px;
-    }
 
-    .page-header h1{
-        font-size:28px;
-    }
+.dashboard {
 
-    .form-row{
-        flex-direction:column;
-    }
+  padding:30px 12px;
 
-    .card{
-        padding:22px;
-    }
+}
 
-    .btn-primary{
-        width:100%;
-    }
+
+.page-header h1 {
+
+  font-size:28px;
+
+}
+
+
+.card {
+
+  padding:22px;
+
+  border-radius:18px;
+
+}
+
+
+.form-row {
+
+  flex-direction:column;
+
+  gap:20px;
+
+}
+
+
+.plan-top {
+
+  flex-direction:column;
+
+}
+
+
+.price {
+
+  font-size:22px;
+
+}
+
+
+.btn-primary {
+
+  width:100%;
+
+}
+
+
+.publish-btn {
+
+  width:100%;
+
+}
+
+
+.published-link {
+
+  padding:18px;
+
+}
+
+
+.published-link input {
+
+  font-size:12px;
+
+}
+
+
+
+}
+
+
+
+@media(max-width:420px){
+
+
+.page-header h1 {
+
+  font-size:24px;
+
+}
+
+
+.card-header h2 {
+
+  font-size:20px;
+
+}
+
+
+.dashboard {
+
+  padding:20px 10px;
+
+}
+
+
 }

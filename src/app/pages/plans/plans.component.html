@@ -1,14 +1,79 @@
+<!-- CUSTOMER NAVBAR -->
+
+<nav class="customer-navbar">
+
+  <div class="nav-container">
+
+    <!-- Brand -->
+    <div class="brand">
+
+      <img
+        *ngIf="merchant.logo"
+        [src]="merchant.logo"
+        class="nav-logo"
+        alt="Logo">
+
+      <div class="brand-text">
+
+        <h2>
+          {{ merchant.businessName || 'SubFlow' }}
+        </h2>
+
+        <span>
+          Subscription Plans
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- Mobile Menu Button -->
+
+    <button
+      class="menu-toggle"
+      >
+
+      <span></span>
+      <span></span>
+      <span></span>
+
+    </button>
+
+
+
+    <!-- Links -->
+
+    <div
+      class="nav-links"
+    >
+
+      <a>
+        Plans
+      </a>
+
+      <a>
+        About
+      </a>
+
+      <a>
+        Contact
+      </a>
+
+    </div>
+
+
+  </div>
+
+</nav>
+
 <div class="pricing-section">
   <div class="container">
 
     <!-- Merchant Branding -->
     <div class="merchant-header">
 
-      <img
-        *ngIf="merchant.logo"
-        [src]="merchant.logo"
-        class="merchant-logo"
-        alt="Business Logo">
+     
 
       <span class="badge">
         {{ merchant.businessName || 'Merchant' }}

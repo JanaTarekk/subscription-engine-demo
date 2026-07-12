@@ -14,30 +14,30 @@ export class PaymentService {
   createSession(plan: any) {
 
     const body = {
-      expireAt: new Date(Date.now() + 30 * 60000).toISOString(),
-      maxFailureAttempts: 3,
-      paymentType: "credit",
-      amount: plan.price.toString(),
-      currency: "EGP",
-      order: "ORDER_" + Date.now(),
+  expireAt: new Date(Date.now() + 30 * 60000).toISOString(),
+  maxFailureAttempts: 3,
+  paymentType: "credit",
+  amount: plan.price.toString(),
+  currency: "EGP",
+  order: "ORDER_" + Date.now(),
 
-      merchantRedirect:
-`https://subscription-engine-demo.vercel.app/success?plan=${plan.name}&price=${plan.price}`,
+  merchantRedirect:
+  `https://subscription-engine-demo.vercel.app/success?plan=${encodeURIComponent(plan.name)}&price=${plan.price}`,
 
-      display: "en",
-      type: "one-time",
+  display: "en",
+  type: "one-time",
 
-      merchantId: environment.kashierMerchantId,
+  merchantId: environment.kashierMerchantId,
 
-      description: plan.name,
+  description: `${plan.name} Subscription`,
 
-      allowedMethods: "card,wallet",
+  allowedMethods: "card,wallet",
 
-      customer: {
-        email: "test@gmail.com",
-        reference: "USER_" + Date.now()
-      }
-    };
+  customer: {
+    email: "test@gmail.com",
+    reference: "USER_" + Date.now()
+  }
+};
 
     return this.http.post<any>(
       this.url,

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
 
 import { PaymentService } from '../../services/payment.service';
-import { FirebaseService } from '../../services/firebase.service';
+import { PlanService } from '../../services/plan.service';
+import { MerchantService } from '../../services/merchant.service';
 
 import { Plan } from '../../models/plan.model';
 import { Merchant } from '../../models/merchant.model';
@@ -29,49 +29,37 @@ export class PlansComponent implements OnInit {
 
   constructor(
     private paymentService: PaymentService,
-    private firebaseService: FirebaseService,
-    private route: ActivatedRoute
+    private planService: PlanService,
+    private merchantService: MerchantService
   ) {}
 
-  async ngOnInit() {
+  ngOnInit(): void {
 
-    const merchantId = this.route.snapshot.paramMap.get('id');
+    this.plans = this.planService.getPlans();
 
-    if (!merchantId) {
-      return;
-    }
-
-    const data: any = await this.firebaseService.getMerchant(merchantId);
-
-    if (data) {
-
-      this.merchant = {
-        businessName: data.businessName,
-        description: data.description,
-        logo: data.logo,
-        brandColor: data.brandColor,
-        website: data.website
-      };
-
-      this.plans = data.plans || [];
-
-    }
+    this.merchant = this.merchantService.getMerchant();
 
   }
 
   subscribe(plan: Plan) {
 
-    this.paymentService.createSession(plan).subscribe({
-      next: (res) => {
+  console.log("Selected plan:", plan);
 
-        if (res.sessionUrl) {
-          window.location.href = res.sessionUrl;
-        }
+  this.paymentService.createSession(plan).subscribe({
+    next: (res) => {
 
-      },
-      error: (err) => console.error(err)
-    });
+      console.log("Payment response:", res);
 
-  }
+      if (res.sessionUrl) {
+        window.location.href = res.sessionUrl;
+      }
+
+    },
+    error: (err) => {
+      console.error("Payment error:", err);
+    }
+  });
+
+}
 
 }

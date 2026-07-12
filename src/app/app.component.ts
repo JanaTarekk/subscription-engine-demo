@@ -33,7 +33,8 @@ export class AppComponent {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
 
-        this.showNavbar = !this.router.url.startsWith('/plans');
+        this.showNavbar = !this.router.url.startsWith('/plans')
+        && !this.router.url.startsWith('/success');
 
       });
 
