@@ -13,13 +13,13 @@ export class PaymentService {
 
   createSession(plan: any) {
 
-      const body = {
-  expireAt: new Date(Date.now() + 30 * 60000).toISOString(),
-  maxFailureAttempts: 3,
-  paymentType: "credit",
-  amount: plan.price.toString(),
-  currency: "EGP",
-  order: "ORDER_" + Date.now(),
+    const body = {
+      expireAt: new Date(Date.now() + 30 * 60000).toISOString(),
+      maxFailureAttempts: 3,
+      paymentType: "credit",
+      amount: plan.price.toString(),
+      currency: "EGP",
+      order: "ORDER_" + Date.now(),
 
       merchantRedirect:
 `https://subscription-engine-demo.vercel.app/success?plan=${plan.name}&price=${plan.price}`,
@@ -29,7 +29,7 @@ export class PaymentService {
 
       merchantId: environment.kashierMerchantId,
 
-       description: `${plan.name} Subscription`,
+      description: plan.name,
 
       allowedMethods: "card,wallet",
 
