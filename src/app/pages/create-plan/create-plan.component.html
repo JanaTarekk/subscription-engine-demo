@@ -329,3 +329,19 @@
   </div>
 
 </div>
+
+<div
+  class="toast"
+  *ngIf="toastMessage"
+  [class.show]="toastMessage"
+  [class.error]="toastType === 'error'">
+
+  <span class="toast-icon">
+    {{ toastIcon }}
+  </span>
+
+  <span>
+    {{ toastMessage }}
+  </span>
+
+</div>

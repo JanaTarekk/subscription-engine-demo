@@ -67,7 +67,7 @@ export class PlansComponent implements OnInit {
 
     console.log('Selected plan:', plan);
 
-    this.paymentService.createSession(plan).subscribe({
+    this.paymentService.createSession(plan, this.merchantId).subscribe({
       next: (res) => {
 
         console.log('Payment response:', res);

@@ -26,6 +26,11 @@ export class CreatePlanComponent implements OnInit {
 
   publicLink = '';
 
+  toastMessage = '';
+
+  toastType: 'success' | 'error' = 'success';
+  toastIcon = '✓';
+
   merchant: Merchant = {
     businessName: '',
     description: '',
@@ -62,14 +67,28 @@ export class CreatePlanComponent implements OnInit {
   }
 
   saveBranding() {
-    console.log(this.merchant);
+    if (
+      !this.merchant.businessName.trim() ||
+      !this.merchant.description.trim() 
+    ) {
+      this.showToast('Please fill in branding fields.', 'error');
+      return;
+    }
 
     this.merchantService.saveMerchant(this.merchant);
 
-    alert('Branding saved successfully!');
+    this.showToast('Branding saved successfully!');
   }
 
   savePlan() {
+    if (
+      !this.plan.name.trim() ||
+      this.plan.price <= 0 
+    ) {
+      this.showToast('Please complete plan details.', 'error');
+      return;
+    }
+
     this.plan.id = Date.now();
 
     this.plan.features = this.featuresText
@@ -92,7 +111,7 @@ export class CreatePlanComponent implements OnInit {
 
     this.loadPlans();
 
-    alert('Plan created successfully!');
+    this.showToast('Plan created successfully!');
   }
 
   deletePlan(id: number) {
@@ -120,6 +139,18 @@ export class CreatePlanComponent implements OnInit {
   }
 
   async publishWebsite() {
+    if (
+      !this.merchant.businessName.trim() 
+    ) {
+      this.showToast('Please save your business branding first.', 'error');
+      return;
+    }
+
+    if (this.plans.length === 0) {
+      this.showToast('Please create at least one subscription plan.', 'error');
+      return;
+    }
+
     try {
       const merchantId = await this.firebaseService.publishMerchant(
         this.merchant,
@@ -128,17 +159,28 @@ export class CreatePlanComponent implements OnInit {
 
       this.publicLink = `${window.location.origin}/plans/${merchantId}`;
 
-      alert('Website published successfully!');
+      this.showToast('Website published successfully!');
     } catch (error) {
-      console.error(error);
-
-      alert('Failed to publish website.');
+      this.showToast('Failed to publish website.', 'error');
     }
   }
 
   copyLink() {
     navigator.clipboard.writeText(this.publicLink);
 
-    alert('Link copied successfully!');
+    this.showToast('Link copied successfully!');
   }
+
+  showToast(message: string, type: 'success' | 'error' = 'success') {
+
+  this.toastMessage = message;
+  this.toastType = type;
+
+  this.toastIcon = type === 'success' ? '✓' : '✕';
+
+  setTimeout(() => {
+    this.toastMessage = '';
+  }, 3000);
+
+}
 }

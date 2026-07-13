@@ -11,7 +11,7 @@ export class PaymentService {
 
   constructor(private http: HttpClient) {}
 
-  createSession(plan: any) {
+  createSession(plan: any , merchantId: string) {
 
     const body = {
   expireAt: new Date(Date.now() + 30 * 60000).toISOString(),
@@ -22,7 +22,7 @@ export class PaymentService {
   order: "ORDER_" + Date.now(),
 
   merchantRedirect:
-  `https://subscription-engine-demo.vercel.app/success?plan=${encodeURIComponent(plan.name)}&price=${plan.price}`,
+`https://subscription-engine-demo.vercel.app/success?plan=${encodeURIComponent(plan.name)}&price=${plan.price}&merchantId=${merchantId}`,
 
   display: "en",
   type: "one-time",

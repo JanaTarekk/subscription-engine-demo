@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-success',
@@ -12,14 +12,21 @@ export class SuccessComponent {
 
   plan = '';
   price = '';
+  merchantId = '';
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute ,
+  private router: Router) {
 
     this.route.queryParams.subscribe(params => {
       this.plan = params['plan'];
       this.price = params['price'];
+      this.merchantId = params['merchantId'];
     });
 
   }
+
+  cancelSubscription() {
+  this.router.navigate(['/plans', this.merchantId]);
+}
 
 }
