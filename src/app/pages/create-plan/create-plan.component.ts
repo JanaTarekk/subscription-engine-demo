@@ -15,11 +15,14 @@ import { FirebaseService } from '../../services/firebase.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './create-plan.component.html',
-  styleUrl: './create-plan.component.css'
+  styleUrl: './create-plan.component.css',
 })
 export class CreatePlanComponent implements OnInit {
-
   plans: Plan[] = [];
+
+  showDeleteModal = false;
+
+  planToDelete: number | null = null;
 
   publicLink = '';
 
@@ -28,7 +31,7 @@ export class CreatePlanComponent implements OnInit {
     description: '',
     logo: '',
     brandColor: '#635BFF',
-    website: ''
+    website: '',
   };
 
   plan: Plan = {
@@ -37,7 +40,7 @@ export class CreatePlanComponent implements OnInit {
     description: '',
     price: 0,
     billingCycle: 'Monthly',
-    features: []
+    features: [],
   };
 
   featuresText = '';
@@ -45,41 +48,34 @@ export class CreatePlanComponent implements OnInit {
   constructor(
     private planService: PlanService,
     private merchantService: MerchantService,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
   ) {}
 
   ngOnInit(): void {
-
     this.loadPlans();
 
     this.merchant = this.merchantService.getMerchant();
-
   }
 
   loadPlans() {
-
     this.plans = this.planService.getPlans();
-
   }
 
   saveBranding() {
-
     console.log(this.merchant);
 
     this.merchantService.saveMerchant(this.merchant);
 
     alert('Branding saved successfully!');
-
   }
 
   savePlan() {
-
     this.plan.id = Date.now();
 
     this.plan.features = this.featuresText
       .split('\n')
-      .map(f => f.trim())
-      .filter(f => f !== '');
+      .map((f) => f.trim())
+      .filter((f) => f !== '');
 
     this.planService.addPlan(this.plan);
 
@@ -89,7 +85,7 @@ export class CreatePlanComponent implements OnInit {
       description: '',
       price: 0,
       billingCycle: 'Monthly',
-      features: []
+      features: [],
     };
 
     this.featuresText = '';
@@ -100,43 +96,49 @@ export class CreatePlanComponent implements OnInit {
   }
 
   deletePlan(id: number) {
+    this.planToDelete = id;
 
-    this.planService.deletePlan(id);
+    this.showDeleteModal = true;
+  }
 
-    this.loadPlans();
+  confirmDelete() {
+    if (this.planToDelete !== null) {
+      this.planService.deletePlan(this.planToDelete);
 
+      this.loadPlans();
+    }
+
+    this.showDeleteModal = false;
+
+    this.planToDelete = null;
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+
+    this.planToDelete = null;
   }
 
   async publishWebsite() {
-
     try {
-
       const merchantId = await this.firebaseService.publishMerchant(
         this.merchant,
-        this.plans
+        this.plans,
       );
 
-      this.publicLink =
-        `${window.location.origin}/plans/${merchantId}`;
+      this.publicLink = `${window.location.origin}/plans/${merchantId}`;
 
       alert('Website published successfully!');
-
     } catch (error) {
-
       console.error(error);
 
       alert('Failed to publish website.');
-
     }
-
   }
 
   copyLink() {
-
     navigator.clipboard.writeText(this.publicLink);
 
     alert('Link copied successfully!');
-
   }
-
 }

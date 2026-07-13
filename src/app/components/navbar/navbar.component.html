@@ -17,8 +17,7 @@
     <!-- Mobile -->
     <button
       class="menu-toggle"
-      (click)="toggleMenu()"
-      [class.open]="isMenuOpen">
+      >
 
       <span class="bar"></span>
       <span class="bar"></span>
@@ -28,7 +27,7 @@
 
     <div
       class="nav-menu-wrapper"
-      [class.active]="isMenuOpen">
+      >
 
       <ul class="nav-links">
 
@@ -37,14 +36,6 @@
             routerLink="/create-plan"
             routerLinkActive="active">
             Dashboard
-          </a>
-        </li>
-
-        <li>
-          <a
-            routerLink="/subscriptions"
-            routerLinkActive="active">
-            Subscriptions
           </a>
         </li>
 
