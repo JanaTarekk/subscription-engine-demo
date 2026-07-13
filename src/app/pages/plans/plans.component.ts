@@ -19,6 +19,8 @@ export class PlansComponent implements OnInit {
 
   plans: Plan[] = [];
 
+  merchantId = '';
+
   merchant: Merchant = {
     businessName: '',
     description: '',
@@ -64,6 +66,7 @@ export class PlansComponent implements OnInit {
   }
 
   subscribe(plan: Plan) {
+
 
     console.log('Selected plan:', plan);
 
