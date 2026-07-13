@@ -14,8 +14,7 @@ export class SuccessComponent {
   price = '';
   merchantId = '';
 
-  constructor(private route: ActivatedRoute ,
-  private router: Router) {
+  constructor(private route: ActivatedRoute) {
 
     this.route.queryParams.subscribe(params => {
       this.plan = params['plan'];
@@ -25,8 +24,6 @@ export class SuccessComponent {
 
   }
 
-  cancelSubscription() {
-  this.router.navigate(['/plans', this.merchantId]);
-}
+  
 
 }

@@ -1,62 +1,85 @@
 <div class="dashboard-container">
+
   <!-- Header -->
   <header class="dashboard-header">
+
     <div class="welcome-text">
-      <h1>Subscription Activated 🎉</h1>
+      <h1>Subscription Confirmed 🎉</h1>
+
       <p class="subtitle">
-        Your payment was completed successfully. Your account is now ready to
-        start accepting online payments.
+        Your payment was successful and your subscription is now active. Thank you for joining us!
       </p>
+
     </div>
 
     <div class="status-badge active-badge">
       <span class="dot"></span>
       Active
     </div>
+
   </header>
 
   <hr class="section-divider" />
 
   <!-- Success Banner -->
   <div class="alert-card success-alert">
+
     <div class="alert-icon">
       <svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        stroke-width="2.5"
-      >
+        stroke-width="2.5">
+
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
-          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
+          d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+
       </svg>
     </div>
 
     <div class="alert-content">
+
       <h3>{{ plan }} Plan Activated!</h3>
+
       <p>
-        Thank you for choosing Kashier. Your subscription has been activated
-        successfully.
+        Thank you for your purchase. Your subscription has been activated successfully and you can now enjoy all the included benefits.
       </p>
+
     </div>
+
   </div>
 
   <div class="dashboard-grid">
+
     <!-- LEFT CARD -->
     <div class="dash-card">
+
       <div class="card-title">
+
         <h2>Subscription Summary</h2>
-        <span class="plan-tag">{{ plan }}</span>
+
+        <span class="plan-tag">
+          {{ plan }}
+        </span>
+
       </div>
 
       <div class="plan-price-info">
-        <span class="price-amount">{{ price }} EGP</span>
-        <span class="price-period">/ month</span>
+
+        <span class="price-amount">
+          {{ price }} EGP
+        </span>
+
+        <span class="price-period">
+          / month
+        </span>
+
       </div>
 
       <ul class="meta-info-list">
+
         <li>
           <span class="label">Plan</span>
           <span class="value">{{ plan }}</span>
@@ -68,54 +91,54 @@
         </li>
 
         <li>
-          <span class="label">Billing</span>
+          <span class="label">Billing Cycle</span>
           <span class="value">Monthly</span>
         </li>
 
         <li>
-          <span class="label">Status</span>
+          <span class="label">Subscription Status</span>
           <span class="value text-success">Active</span>
         </li>
+
       </ul>
 
-      <div class="card-actions " (click)="cancelSubscription()">
-        <button class="btn btn-secondary">Change Plan</button>
-
-        <button class="btn btn-outline-danger" (click)="cancelSubscription()">
-          Cancel Subscription
-        </button>
-      </div>
     </div>
 
     <!-- RIGHT CARD -->
     <div class="dash-card">
-      <h2>Account Ready</h2>
+
+      <h2>You're All Set!</h2>
 
       <p class="card-desc">
-        Your merchant account is now ready to accept online payments.
+        Your subscription is active and ready to use. Enjoy all the features included in your plan.
       </p>
 
       <div class="action-grid">
+
         <div class="action-tile">
-          <div class="tile-icon">✓</div>
-          <span>{{ plan }} subscription is active</span>
+          <div class="tile-icon">✅</div>
+          <span>Your {{ plan }} subscription is active</span>
         </div>
 
         <div class="action-tile">
           <div class="tile-icon">💳</div>
-          <span>Online payment processing enabled</span>
+          <span>Your payment has been processed successfully</span>
         </div>
 
         <div class="action-tile">
           <div class="tile-icon">🔒</div>
-          <span>Secure checkout is available</span>
+          <span>Your subscription is securely protected</span>
         </div>
 
         <div class="action-tile">
-          <div class="tile-icon">📊</div>
-          <span>Merchant dashboard is ready</span>
+          <div class="tile-icon">🎉</div>
+          <span>Enjoy all the benefits included in your plan</span>
         </div>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
